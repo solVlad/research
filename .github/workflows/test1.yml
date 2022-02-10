@@ -30,4 +30,5 @@ jobs:
         run: |
           sudo apt-get update -qq && sudo apt-get install -y iperf
           iperf -c ping-90ms.online.net
+          ping  8.8.8.8 -c 100
           
