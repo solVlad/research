@@ -76,6 +76,8 @@ Function: mint(address to, uint256 value) ***
 1	value	uint256	4500000000000000000000000
     ```
 
+then dumped when the rugPull started:
+![](./dump_graph.png)
 
 ## (2) owner drained all assets from the pools
 
