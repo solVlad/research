@@ -6,10 +6,6 @@ name: Manual Test Apis
 # or API.
 on:
   workflow_dispatch:
-    inputs:
-      tags:
-        description: 'run manual'  
-
 
 jobs:
   pipeline:
