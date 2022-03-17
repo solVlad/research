@@ -1,0 +1,17 @@
+{
+   "methods" : {
+      "pause()" : {
+         "details" : "called by the owner to pause, triggers stopped state"
+      },
+      "transferOwnership(address)" : {
+         "details" : "Allows the current owner to transfer control of the contract to a newOwner.",
+         "params" : {
+            "newOwner" : "The address to transfer ownership to."
+         }
+      },
+      "unpause()" : {
+         "details" : "called by the owner to unpause, returns to normal state"
+      }
+   },
+   "title" : "Pausable"
+}

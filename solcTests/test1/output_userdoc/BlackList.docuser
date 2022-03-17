@@ -1,0 +1,7 @@
+{
+   "methods" : {
+      "getBlackListStatus(address)" : {
+         "notice" : "//// Getters to allow the same blacklist to be used also by other contracts (including upgraded Tether) ///////"
+      }
+   }
+}

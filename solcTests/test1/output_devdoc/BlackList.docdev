@@ -1,0 +1,24 @@
+{
+   "methods" : {
+      "balanceOf(address)" : {
+         "details" : "Gets the balance of the specified address.",
+         "params" : {
+            "_owner" : "The address to query the the balance of."
+         },
+         "return" : "An uint representing the amount owned by the passed address."
+      },
+      "transfer(address,uint256)" : {
+         "details" : "transfer token for a specified address",
+         "params" : {
+            "_to" : "The address to transfer to.",
+            "_value" : "The amount to be transferred."
+         }
+      },
+      "transferOwnership(address)" : {
+         "details" : "Allows the current owner to transfer control of the contract to a newOwner.",
+         "params" : {
+            "newOwner" : "The address to transfer ownership to."
+         }
+      }
+   }
+}
