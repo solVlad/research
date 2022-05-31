@@ -1,3 +1,7 @@
+# read mapping storage
+
+
+```
 
 (main)vlad@vladis:chainlysStorage/play1 ‹main*›$ brownie run scripts/deploy.py
 Brownie v1.17.2 - Python development framework for Ethereum
@@ -39,5 +43,5 @@ slot #10755388252479053194738598583259283788444222893546378055319285170786357362
 Terminating local RPC client...
 (main)vlad@vladis:chainlysStorage/play1 ‹main*›$ 
 
-
+```
 
