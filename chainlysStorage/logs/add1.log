@@ -1,0 +1,40 @@
+
+
+send ["0x0000000000000000000000000000000000000004"]
+
+
+status	true Transaction mined and execution succeed
+transaction hash	0x00f48de6c82a0861da3904bbe9ee8608bd848ae6ebf166f5e7da118fa32aec7a
+from	0x5B38Da6a701c568545dCfcB03FcB875f56beddC4
+to	SanctionsList.addToSanctionsList(address[]) 0xd9145CCE52D386f254917e481eB44e9943F39138
+gas	57081 gas
+transaction cost	49635 gas 
+execution cost	49635 gas 
+input	0xb97...00004
+decoded input	{
+	"address[] newSanctions": [
+		"0x0000000000000000000000000000000000000004"
+	]
+}
+decoded output	{}
+logs	[
+	{
+		"from": "0xd9145CCE52D386f254917e481eB44e9943F39138",
+		"topic": "0x2596d7dd6966c5673f9c06ddb0564c4f0e6d8d206ea075b83ad9ddd71a4fb927",
+		"event": "SanctionedAddressesAdded",
+		"args": {
+			"0": [
+				"0x0000000000000000000000000000000000000004"
+			],
+			"addrs": [
+				"0x0000000000000000000000000000000000000004"
+			]
+		}
+	}
+]
+val	0 wei
+
+
+
+
+

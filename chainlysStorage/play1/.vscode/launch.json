@@ -1,0 +1,14 @@
+{
+     "configurations": [
+     
+        {
+            "name": "Brownie: Current Script",
+            "type": "python",
+            "request": "launch",
+            "program": "/home/vlad/.local/bin/brownie",
+            "console": "integratedTerminal",
+            "args": ["run","${file}"]
+        }
+        
+    ]
+}

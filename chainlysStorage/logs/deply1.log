@@ -1,0 +1,36 @@
+ my account 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4
+
+[vm]
+from: 0x5B3...eddC4
+to: SanctionsList.(constructor)
+value: 0 wei
+data: 0x608...70033
+logs: 1
+hash: 0xb93...bfe7d
+status	true Transaction mined and execution succeed
+transaction hash	0xb93c6376fbc0a774b552fb3d8d31b19003419bb345090984fadeafe4adbbfe7d
+from	0x5B38Da6a701c568545dCfcB03FcB875f56beddC4
+to	SanctionsList.(constructor)
+gas	972628 gas
+transaction cost	845763 gas 
+execution cost	845763 gas 
+input	0x608...70033
+decoded input	{}
+decoded output	 - 
+logs	[
+	{
+		"from": "0xd9145CCE52D386f254917e481eB44e9943F39138",
+		"topic": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0",
+		"event": "OwnershipTransferred",
+		"args": {
+			"0": "0x0000000000000000000000000000000000000000",
+			"1": "0x5B38Da6a701c568545dCfcB03FcB875f56beddC4",
+			"previousOwner": "0x0000000000000000000000000000000000000000",
+			"newOwner": "0x5B38Da6a701c568545dCfcB03FcB875f56beddC4"
+		}
+	}
+]
+val	0 wei
+
+
+
