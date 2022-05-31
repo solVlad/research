@@ -45,6 +45,13 @@
 
 !! the code wasn’t implemented into metapool swaps properly
 
+* hacker : 0x63341Ba917De90498F3903B199Df5699b4a55AC0
+    ```
+    funded via Tornado Cash: 
+    https://etherscan.io/tx/0xfc5fb681f54ceb4b0b9db4fcb38204dee7ca89f5cde0ba94179bf1fae563d7db
+    Apr-30-2022 07:35:50 AM +UTC
+    ```
+
 
 * Main hack tx for (3375 ETH) : Apr-30-2022 07:40:24 AM +UTC)
 ```
@@ -64,7 +71,6 @@ Contract 0x797418a5d9dad50ecc0851e0cc23c61ef4c1b9bf
 
 BlockSec whitehat tx for (1357 ETH): 
 ????
-https://etherscan.io/tx/0xfc5fb681f54ceb4b0b9db4fcb38204dee7ca89f5cde0ba94179bf1fae563d7db
 
 
 
@@ -84,7 +90,6 @@ https://etherscan.io/tx/0xfc5fb681f54ceb4b0b9db4fcb38204dee7ca89f5cde0ba94179bf1
 * https://blocksecteam.medium.com/the-analysis-of-nerve-bridge-security-incident-ead361a21025
 
 ## signs
-* hacker : 0x63341Ba917De90498F3903B199Df5699b4a55AC0
-* initially funded via Tornado Cash
+* hacker initially funded via Tornado Cash
 * contract had address [forta agent](forta.md)
 * the code wasn’t implemented into metapool swaps properly
