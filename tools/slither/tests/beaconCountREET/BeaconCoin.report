@@ -1,0 +1,151 @@
+
+slither 0xb8919522331C59f5C16bDfAA6A121a6E03A91F62
+====================================================
+
+
+[93m
+ERC1967Upgrade._upgradeToAndCall(address,bytes,bool) (@openzeppelin/contracts/proxy/ERC1967/ERC1967Upgrade.sol#63-69) ignores return value by Address.functionDelegateCall(newImplementation,data) (@openzeppelin/contracts/proxy/ERC1967/ERC1967Upgrade.sol#67)
+ERC1967Upgrade._upgradeToAndCallSecure(address,bytes,bool) (@openzeppelin/contracts/proxy/ERC1967/ERC1967Upgrade.sol#76-104) ignores return value by Address.functionDelegateCall(newImplementation,data) (@openzeppelin/contracts/proxy/ERC1967/ERC1967Upgrade.sol#82)
+ERC1967Upgrade._upgradeToAndCallSecure(address,bytes,bool) (@openzeppelin/contracts/proxy/ERC1967/ERC1967Upgrade.sol#76-104) ignores return value by Address.functionDelegateCall(newImplementation,abi.encodeWithSignature(upgradeTo(address),oldImplementation)) (@openzeppelin/contracts/proxy/ERC1967/ERC1967Upgrade.sol#90-96)
+ERC1967Upgrade._upgradeBeaconToAndCall(address,bytes,bool) (@openzeppelin/contracts/proxy/ERC1967/ERC1967Upgrade.sol#112-118) ignores return value by Address.functionDelegateCall(IBeacon(newBeacon).implementation(),data) (@openzeppelin/contracts/proxy/ERC1967/ERC1967Upgrade.sol#116)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unused-return[0m
+[92m
+AdminUpgradeabilityProxy.constructor(address,address,bytes).admin (contracts/import.sol#10) shadows:
+	- TransparentUpgradeableProxy.admin() (@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol#58-60) (function)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#local-variable-shadowing[0m
+[92m
+Modifier TransparentUpgradeableProxy.ifAdmin() (@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol#41-47) does not always execute _; or revertReference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-modifier[0m
+[92m
+
+
+
+
+Reentrancy in ERC1967Upgrade._upgradeToAndCallSecure(address,bytes,bool) (@openzeppelin/contracts/proxy/ERC1967/ERC1967Upgrade.sol#76-104):
+	External calls:
+	- Address.functionDelegateCall(newImplementation,data) (@openzeppelin/contracts/proxy/ERC1967/ERC1967Upgrade.sol#82)
+	- Address.functionDelegateCall(newImplementation,abi.encodeWithSignature(upgradeTo(address),oldImplementation)) (@openzeppelin/contracts/proxy/ERC1967/ERC1967Upgrade.sol#90-96)
+	Event emitted after the call(s):
+	- Upgraded(newImplementation) (@openzeppelin/contracts/proxy/ERC1967/ERC1967Upgrade.sol#102)
+
+
+Reentrancy in TransparentUpgradeableProxy.constructor(address,address,bytes) (@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol#33-36):
+	External calls:
+	- ERC1967Proxy(_logic,_data) (@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol#33)
+		- Address.functionDelegateCall(newImplementation,data) (@openzeppelin/contracts/proxy/ERC1967/ERC1967Upgrade.sol#67)
+		- (success,returndata) = target.delegatecall(data) (@openzeppelin/contracts/utils/Address.sol#167)
+	Event emitted after the call(s):
+	- AdminChanged(_getAdmin(),newAdmin) (@openzeppelin/contracts/proxy/ERC1967/ERC1967Upgrade.sol#153)
+		- _changeAdmin(admin_) (@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol#35)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3[0m
+
+
+
+
+
+
+
+
+
+[92m
+Proxy._delegate(address) (@openzeppelin/contracts/proxy/Proxy.sol#21-41) uses assembly
+	- INLINE ASM (@openzeppelin/contracts/proxy/Proxy.sol#23-40)
+Address.isContract(address) (@openzeppelin/contracts/utils/Address.sol#26-35) uses assembly
+	- INLINE ASM (@openzeppelin/contracts/utils/Address.sol#33)
+Address._verifyCallResult(bool,bytes,string) (@openzeppelin/contracts/utils/Address.sol#171-188) uses assembly
+	- INLINE ASM (@openzeppelin/contracts/utils/Address.sol#180-183)
+StorageSlot.getAddressSlot(bytes32) (@openzeppelin/contracts/utils/StorageSlot.sol#51-55) uses assembly
+	- INLINE ASM (@openzeppelin/contracts/utils/StorageSlot.sol#52-54)
+StorageSlot.getBooleanSlot(bytes32) (@openzeppelin/contracts/utils/StorageSlot.sol#60-64) uses assembly
+	- INLINE ASM (@openzeppelin/contracts/utils/StorageSlot.sol#61-63)
+StorageSlot.getBytes32Slot(bytes32) (@openzeppelin/contracts/utils/StorageSlot.sol#69-73) uses assembly
+	- INLINE ASM (@openzeppelin/contracts/utils/StorageSlot.sol#70-72)
+StorageSlot.getUint256Slot(bytes32) (@openzeppelin/contracts/utils/StorageSlot.sol#78-82) uses assembly
+	- INLINE ASM (@openzeppelin/contracts/utils/StorageSlot.sol#79-81)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#assembly-usage[0m
+[92m
+Different versions of Solidity is used:
+	- Version used: ['^0.8.0', '^0.8.2']
+	- ^0.8.0 (@openzeppelin/contracts/access/Ownable.sol#3)
+	- ^0.8.0 (@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol#3)
+	- ^0.8.2 (@openzeppelin/contracts/proxy/ERC1967/ERC1967Upgrade.sol#3)
+	- ^0.8.0 (@openzeppelin/contracts/proxy/Proxy.sol#3)
+	- ^0.8.0 (@openzeppelin/contracts/proxy/beacon/IBeacon.sol#3)
+	- ^0.8.0 (@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol#3)
+	- ^0.8.0 (@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol#3)
+	- ^0.8.0 (@openzeppelin/contracts/proxy/utils/UUPSUpgradeable.sol#3)
+	- ^0.8.0 (@openzeppelin/contracts/utils/Address.sol#3)
+	- ^0.8.0 (@openzeppelin/contracts/utils/Context.sol#3)
+	- ^0.8.0 (@openzeppelin/contracts/utils/StorageSlot.sol#3)
+	- ^0.8.0 (contracts/import.sol#2)
+	- ^0.8.2 (contracts/test/Proxiable.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#different-pragma-directives-are-used[0m
+[92m
+Address.functionCall(address,bytes) (@openzeppelin/contracts/utils/Address.sol#79-81) is never used and should be removed
+Address.functionCall(address,bytes,string) (@openzeppelin/contracts/utils/Address.sol#89-91) is never used and should be removed
+Address.functionCallWithValue(address,bytes,uint256) (@openzeppelin/contracts/utils/Address.sol#104-106) is never used and should be removed
+Address.functionCallWithValue(address,bytes,uint256,string) (@openzeppelin/contracts/utils/Address.sol#114-121) is never used and should be removed
+Address.functionStaticCall(address,bytes) (@openzeppelin/contracts/utils/Address.sol#129-131) is never used and should be removed
+Address.functionStaticCall(address,bytes,string) (@openzeppelin/contracts/utils/Address.sol#139-145) is never used and should be removed
+Address.sendValue(address,uint256) (@openzeppelin/contracts/utils/Address.sol#53-59) is never used and should be removed
+Context._msgData() (@openzeppelin/contracts/utils/Context.sol#20-23) is never used and should be removed
+ERC1967Upgrade._getBeacon() (@openzeppelin/contracts/proxy/ERC1967/ERC1967Upgrade.sol#171-173) is never used and should be removed
+ERC1967Upgrade._setBeacon(address) (@openzeppelin/contracts/proxy/ERC1967/ERC1967Upgrade.sol#178-188) is never used and should be removed
+ERC1967Upgrade._upgradeBeaconToAndCall(address,bytes,bool) (@openzeppelin/contracts/proxy/ERC1967/ERC1967Upgrade.sol#112-118) is never used and should be removed
+ERC1967Upgrade._upgradeTo(address) (@openzeppelin/contracts/proxy/ERC1967/ERC1967Upgrade.sol#53-56) is never used and should be removed
+Proxiable._beforeUpgrade(address) (contracts/test/Proxiable.sol#11) is never used and should be removed
+Proxy._implementation() (@openzeppelin/contracts/proxy/Proxy.sol#47) is never used and should be removed
+StorageSlot.getBytes32Slot(bytes32) (@openzeppelin/contracts/utils/StorageSlot.sol#69-73) is never used and should be removed
+StorageSlot.getUint256Slot(bytes32) (@openzeppelin/contracts/utils/StorageSlot.sol#78-82) is never used and should be removed
+TransparentUpgradeableProxy._admin() (@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol#109-111) is never used and should be removed
+UUPSUpgradeable._authorizeUpgrade(address) (@openzeppelin/contracts/proxy/utils/UUPSUpgradeable.sol#27) is never used and should be removed
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dead-code[0m
+[92m
+Pragma version^0.8.0 (@openzeppelin/contracts/access/Ownable.sol#3) allows old versions
+Pragma version^0.8.0 (@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol#3) allows old versions
+Pragma version^0.8.2 (@openzeppelin/contracts/proxy/ERC1967/ERC1967Upgrade.sol#3) allows old versions
+Pragma version^0.8.0 (@openzeppelin/contracts/proxy/Proxy.sol#3) allows old versions
+Pragma version^0.8.0 (@openzeppelin/contracts/proxy/beacon/IBeacon.sol#3) allows old versions
+Pragma version^0.8.0 (@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol#3) allows old versions
+Pragma version^0.8.0 (@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol#3) allows old versions
+Pragma version^0.8.0 (@openzeppelin/contracts/proxy/utils/UUPSUpgradeable.sol#3) allows old versions
+Pragma version^0.8.0 (@openzeppelin/contracts/utils/Address.sol#3) allows old versions
+Pragma version^0.8.0 (@openzeppelin/contracts/utils/Context.sol#3) allows old versions
+Pragma version^0.8.0 (@openzeppelin/contracts/utils/StorageSlot.sol#3) allows old versions
+Pragma version^0.8.0 (contracts/import.sol#2) allows old versions
+Pragma version^0.8.2 (contracts/test/Proxiable.sol#2) allows old versions
+solc-0.8.2 is not recommended for deployment
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity[0m
+[92m
+Low level call in ProxyAdmin.getProxyImplementation(TransparentUpgradeableProxy) (@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol#21-27):
+	- (success,returndata) = address(proxy).staticcall(0x5c60da1b) (@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol#24)
+Low level call in ProxyAdmin.getProxyAdmin(TransparentUpgradeableProxy) (@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol#36-42):
+	- (success,returndata) = address(proxy).staticcall(0xf851a440) (@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol#39)
+Low level call in Address.sendValue(address,uint256) (@openzeppelin/contracts/utils/Address.sol#53-59):
+	- (success) = recipient.call{value: amount}() (@openzeppelin/contracts/utils/Address.sol#57)
+Low level call in Address.functionCallWithValue(address,bytes,uint256,string) (@openzeppelin/contracts/utils/Address.sol#114-121):
+	- (success,returndata) = target.call{value: value}(data) (@openzeppelin/contracts/utils/Address.sol#119)
+Low level call in Address.functionStaticCall(address,bytes,string) (@openzeppelin/contracts/utils/Address.sol#139-145):
+	- (success,returndata) = target.staticcall(data) (@openzeppelin/contracts/utils/Address.sol#143)
+Low level call in Address.functionDelegateCall(address,bytes,string) (@openzeppelin/contracts/utils/Address.sol#163-169):
+	- (success,returndata) = target.delegatecall(data) (@openzeppelin/contracts/utils/Address.sol#167)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls[0m
+[92m
+Redundant expression "this (@openzeppelin/contracts/utils/Context.sol#21)" inContext (@openzeppelin/contracts/utils/Context.sol#15-24)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#redundant-statements[0m
+[92m
+renounceOwnership() should be declared external:
+	- Ownable.renounceOwnership() (@openzeppelin/contracts/access/Ownable.sol#54-57)
+transferOwnership(address) should be declared external:
+	- Ownable.transferOwnership(address) (@openzeppelin/contracts/access/Ownable.sol#63-67)
+getProxyImplementation(TransparentUpgradeableProxy) should be declared external:
+	- ProxyAdmin.getProxyImplementation(TransparentUpgradeableProxy) (@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol#21-27)
+getProxyAdmin(TransparentUpgradeableProxy) should be declared external:
+	- ProxyAdmin.getProxyAdmin(TransparentUpgradeableProxy) (@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol#36-42)
+changeProxyAdmin(TransparentUpgradeableProxy,address) should be declared external:
+	- ProxyAdmin.changeProxyAdmin(TransparentUpgradeableProxy,address) (@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol#51-53)
+upgrade(TransparentUpgradeableProxy,address) should be declared external:
+	- ProxyAdmin.upgrade(TransparentUpgradeableProxy,address) (@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol#62-64)
+upgradeAndCall(TransparentUpgradeableProxy,address,bytes) should be declared external:
+	- ProxyAdmin.upgradeAndCall(TransparentUpgradeableProxy,address,bytes) (@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol#74-76)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external[0m
+0xb8919522331C59f5C16bDfAA6A121a6E03A91F62 analyzed (14 contracts with 77 detectors), 62 result(s) found
