@@ -22,8 +22,7 @@ Property
 ```
 (manticore_native) (REDF)vlad@vladis:play/6_rouding ‹main*›$ python 6_run.py   
 
-Bug found, results are in /data/redef/research/manticore/play/6_rouding/mcore_ky1o9u7h
-
+Bug found, results are in /data/redef/research/manticore/play/6_rouding/mcore_1h5kx0f6
 
 
 Transactions No. 0
