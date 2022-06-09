@@ -13,7 +13,9 @@ ethsec@db0d14f62320:~$ git clone https://github.com/trailofbits/publications
 
 ```
 
-## 01.eth-security-toolbox train
+## 01.eth-security-toolbox train  - workshop01
+
+* https://github.com/crytic/building-secure-contracts/tree/master/program-analysis/manticore
 
 ```
 /home/ethsec/building-secure-contracts/program-analysis/manticore
@@ -49,7 +51,7 @@ ethsec@db0d14f62320:~$ git clone https://github.com/trailofbits/publications
 └── symbolic-execution-introduction.md
 ```
 
-## 02.
+## 02.   workshop01
 
 ```
 ~/publications/workshops/Automated Smart Contracts Audit - TruffleCon 2019/manticore
