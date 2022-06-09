@@ -1,0 +1,1 @@
+/data/redef/manticore/manticore_native/bin/manticore 1_simpleCase1.sol

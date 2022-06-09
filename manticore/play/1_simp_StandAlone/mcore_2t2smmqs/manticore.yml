@@ -1,0 +1,4 @@
+cli:
+  argv:
+  - 1_simpleCase1.sol
+  skip_reverts: true
