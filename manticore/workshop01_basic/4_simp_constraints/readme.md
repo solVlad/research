@@ -34,7 +34,7 @@ last_return = Operators.CONCAT(256, *last_return)
 
 ## global constraints
 
-* Use m.constrain(constraint) to add a global cosntraint
+* Use m.constrain(constraint) to add a global constraints
 
 example : call a contract from a symbolic address, and restraint this address to be specific values:
 
