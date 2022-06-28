@@ -1,0 +1,50 @@
+
+* solc-select use 0.4.15
+* slither contracts/Rewards.sol
+
+
+```
+Rewards.withdraw() (contracts/Rewards.sol#8-15) sends eth to arbitrary user
+        Dangerous calls:
+        - ! msg.sender.call.value(_amount)() (contracts/Rewards.sol#11)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#functions-that-send-ether-to-arbitrary-destinations
+
+
+
+
+Reentrancy in Rewards.withdraw() (contracts/Rewards.sol#8-15):
+        External calls:
+        - ! msg.sender.call.value(_amount)() (contracts/Rewards.sol#11)
+        State variables written after the call(s):
+        - gifts -= 1 (contracts/Rewards.sol#13)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities
+
+
+
+
+
+
+
+Pragma version^0.4.8 (contracts/Rewards.sol#1) allows old versions
+solc-0.4.15 is not recommended for deployment
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Low level call in Rewards.withdraw() (contracts/Rewards.sol#8-15):
+        - ! msg.sender.call.value(_amount)() (contracts/Rewards.sol#11)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+
+Parameter Rewards.allowGifts(uint256).num_gifts (contracts/Rewards.sol#6) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+allowGifts(uint256) should be declared external:
+        - Rewards.allowGifts(uint256) (contracts/Rewards.sol#6)
+withdraw() should be declared external:
+        - Rewards.withdraw() (contracts/Rewards.sol#8-15)
+deposit() should be declared external:
+        - Rewards.deposit() (contracts/Rewards.sol#17)
+getBalance() should be declared external:
+        - Rewards.getBalance() (contracts/Rewards.sol#19-22)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+contracts/Rewards.sol analyzed (1 contracts with 77 detectors), 10 result(s) found
+
+```
