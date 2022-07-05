@@ -1,4 +1,6 @@
-# vol type = “Claim and Pool”
+# vol
+
+* “Claim and Pool”
 
 
 The bug is due to the lack of caller verification, which is exploited to increase the balance without making any payment
